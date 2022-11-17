@@ -42,8 +42,6 @@ const images = [
   }
 ];  
 
-const apiKey = 'm5Xj4bbP1D7Ao9rbl1IKvWd6sCaPIFGy';
-
 function App() {
   const [searchString, setSearchString] = useState('minions');
   const [images, setImages] = useState([]);
