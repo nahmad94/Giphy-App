@@ -1,8 +1,9 @@
 import React from 'react'
-import App from '../App';
+import { useState } from 'react'
 
-export default function GetImages() {
-    const searchString = useState(searchString);
+export default function GetImages(searchOptions, setImages) {
+    let searchString = 'minions'
+    searchString = useState(searchString);
     const url = `${searchOptions.api}${searchOptions.endpoint}?api_key=${searchOptions.key}&q=${searchString} &limit=${searchOptions.limit}&offset=${searchOptions.offset}&rating=${searchOptions.rating}&lang=en`;
     fetch(url)
       .then(response => response.json())

@@ -1,5 +1,4 @@
 import React from 'react';
-import './SearchHeader.css';
 import logo from '../giphy-searcher-logo.svg';
 
 function SearchHeader({ lastSearch }) {

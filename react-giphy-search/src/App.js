@@ -42,16 +42,22 @@ const images = [
   }
 ];  
 
+const apiKey = 'm5Xj4bbP1D7Ao9rbl1IKvWd6sCaPIFGy';
+
 function App() {
   const [searchString, setSearchString] = useState('minions');
-  const {searchOptions} = {
-    key: process.env.REACT_APP_GIPHY_KEY,
+  const [images, setImages] = useState([]);
+  const [lastSearch, setLastSearch] = useState('');
+
+  const searchOptions = {
+    key: 'm5Xj4bbP1D7Ao9rbl1IKvWd6sCaPIFGy',
     limit: 25,
     rating: 'G',
     api: 'https://api.giphy.com/v1/gifs',
     endpoint: '/search',
     offset: 0,
   };
+
   function handleChange(event) {
     setSearchString(event.target.value);
   }
@@ -60,17 +66,18 @@ function App() {
     event.preventDefault();
     getImages(searchString);
   }
-  const [images, setImages] = useState([]);
-  useEffect(() => {
-    GetImages();
-  }, []);
-  const [lastSearch, setLastSearch] = useState('');
+
+  // useEffect(() => {
+  //   GetImages();
+  // }, []);
+
   useEffect(() => {
     getImages(searchString);
   }, []);
+
   function getImages(searchString) {
     const url = `${searchOptions.api}${searchOptions.endpoint}?api_key=${searchOptions.key}&q=${searchString}&limit=${searchOptions.limit}&offset=${searchOptions.offset}&rating=${searchOptions.rating}&lang=en`;
-
+    console.log(url)
     fetch(url)
       .then(response => response.json())
       .then(response => {
@@ -80,6 +87,7 @@ function App() {
       })
       .catch(console.error);
   }
+
   return (
     <div className="App">
       <SearchHeader lastSearch={lastSearch}/>

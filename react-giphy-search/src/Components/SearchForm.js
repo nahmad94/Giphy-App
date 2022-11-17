@@ -1,7 +1,7 @@
 import React from 'react'
 import { SearchIcon } from '../Shared/AppIcons';
 
-export default function SearchForm() {
+export default function SearchForm(handleSubmit, handleChange, searchString) {
   return (
     <form onSubmit={handleSubmit} className="form-horizontal">
       <input
